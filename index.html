@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Vanilla js todo</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css"
+  </head>
 
-<head>
-	<title>Parcel Sandbox</title>
-	<meta charset="UTF-8" />
-</head>
-
-<body>
-	<div id="app"></div>
-
-	<script src="src/index.js">
-	</script>
-</body>
-
+  <body>
+    <div class="input-area">
+      <input placeholder="Input ToDo" />
+      <button>Add</button>
+    </div>
+    <div class="todo-area">
+      <p>ToDo</p>
+      <ul>
+        <li>something to do</li>
+        <button>complete</button>
+        <button>remove</button>
+      </ul>
+    </div>
+    <div class="done-area">
+      <p>Done</p>
+      <ul>
+        <li>something has been done</li>
+        <button>rebase</button>
+      </ul>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
 </html>
