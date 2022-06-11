@@ -17,7 +17,9 @@ const onClickAdd = () => {
   const completeBtn = document.createElement("button");
   completeBtn.innerText = "complete";
   completeBtn.addEventListener("click", () => {
-    alert("complete");
+    // mv completeTarget from todo-list to done-list
+    const completeTarget = removeBtn.parentNode;
+    document.getElementById("done-list").appendChild(completeTarget);
   });
 
   // remove button
@@ -26,7 +28,8 @@ const onClickAdd = () => {
   removeBtn.addEventListener("click", () => {
     // remove the parent node of the remove-btn clicked
     const removeTarget = removeBtn.parentNode;
-    document.getElementById("todo-list").removeChild(removeTarget);
+    const parentRmTarget = removeTarget.parentElement;
+    parentRmTarget.removeChild(removeTarget);
   });
 
   // compose div(list-row)
