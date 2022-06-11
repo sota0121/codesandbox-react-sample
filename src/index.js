@@ -24,7 +24,9 @@ const onClickAdd = () => {
   const removeBtn = document.createElement("button");
   removeBtn.innerText = "remove";
   removeBtn.addEventListener("click", () => {
-    alert("remove");
+    // remove the parent node of the remove-btn clicked
+    const removeTarget = removeBtn.parentNode;
+    document.getElementById("todo-list").removeChild(removeTarget);
   });
 
   // compose div(list-row)
