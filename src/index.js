@@ -1,5 +1,9 @@
 import "./styles.css";
 
+const removeFromToDoList = (target) => {
+  document.getElementById("todo-list").removeChild(target);
+};
+
 const onClickAdd = () => {
   const inputText = document.getElementById("add-text").value;
   document.getElementById("add-text").value = "";
@@ -17,9 +21,26 @@ const onClickAdd = () => {
   const completeBtn = document.createElement("button");
   completeBtn.innerText = "complete";
   completeBtn.addEventListener("click", () => {
-    // mv completeTarget from todo-list to done-list
-    const completeTarget = removeBtn.parentNode;
-    document.getElementById("done-list").appendChild(completeTarget);
+    // remove target
+    const completeTarget = completeBtn.parentNode;
+    removeFromToDoList(completeTarget);
+
+    // compose done item
+    const todoContent = completeTarget.firstElementChild.innerText;
+    const doneContainer = document.createElement("div");
+    doneContainer.className = "list-row";
+    const doneItem = document.createElement("li");
+    doneItem.innerText = todoContent;
+    const rebaseBtn = document.createElement("button");
+    rebaseBtn.innerText = "rebase";
+    rebaseBtn.addEventListener("click", () => {
+      alert("rebase");
+    });
+    doneContainer.appendChild(doneItem);
+    doneContainer.appendChild(rebaseBtn);
+
+    // add target to done-list
+    document.getElementById("done-list").appendChild(doneContainer);
   });
 
   // remove button
@@ -28,8 +49,7 @@ const onClickAdd = () => {
   removeBtn.addEventListener("click", () => {
     // remove the parent node of the remove-btn clicked
     const removeTarget = removeBtn.parentNode;
-    const parentRmTarget = removeTarget.parentElement;
-    parentRmTarget.removeChild(removeTarget);
+    removeFromToDoList(removeTarget);
   });
 
   // compose div(list-row)
